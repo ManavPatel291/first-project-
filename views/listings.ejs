@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Listings</title>
+    <style>
+        .listing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .listing-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .listing-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .listing-card h2 {
+            margin: 10px 0;
+        }
+        .listing-card p {
+            color: #666;
+        }
+        .price {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .new-listing-link {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .new-listing-link:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Listings</h1>
+    <a href="/listings/new" class="new-listing-link">Create New Listing</a>
+    <div class="listing-grid">
+        <% listings.forEach(listing => { %>
+ 
+            <div class="listing-card">
+                <img src="<%= listing.imageUrl %>" alt="<%= listing.title %>">
+                <h2><%= listing.title %></h2>
+                <p class="price">$<%= listing.price %></p>
+                <p><%= listing.location %></p>
+                <a href="/listings/<%= listing._id %>">View Details</a>
+                
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html> 
